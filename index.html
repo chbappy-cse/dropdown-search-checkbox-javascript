@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown with Search & Checkboxes</title>
-    <link rel="stylesheet" href="./css/style.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ✅ Basic SEO Meta Tags -->
     <title>Dropdown with Search & Checkboxes | Custom Select Menu</title>
@@ -33,16 +28,14 @@
 
     <!-- ✅ Favicon (For Browser Tabs & Mobile) -->
     <link rel="icon" type="image/png" href="./img/favicon.png">
-
-    <!-- ✅ Robots Meta Tag (Control Search Engine Indexing) -->
-    <meta name="robots" content="index, follow"> <!-- Allows indexing -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
 <div class="selectDropdown">
     <div class="selectDropdownToggle">
         <div class="dropdown-toggle__title">
-            <span>Select Continent/ Region</span>
+            <span>Select Fruits/ Items</span>
             <img id="dropdownIcon" src="./img/chevron-up.svg" alt="Dropdown with Search & Checkboxes">
         </div>
     </div>
@@ -53,13 +46,12 @@
                 <img src="./img/search-input.svg" alt="Dropdown with Search & Checkboxes">
             </div>
             <div id="selectDropdownItems">
+                <div class="selectDropdownItem selectAll"><span>Select All</span> <input type="checkbox" id="selectAll"></div>
                 <div class="selectDropdownItem"><span>Apple</span> <input type="checkbox" value="Apple"></div>
                 <div class="selectDropdownItem"><span>Banana</span> <input type="checkbox" value="Banana"></div>
                 <div class="selectDropdownItem"><span>Cherry</span> <input type="checkbox" value="Cherry"></div>
                 <div class="selectDropdownItem"><span>Mango</span> <input type="checkbox" value="Mango"></div>
                 <div class="selectDropdownItem"><span>Orange</span> <input type="checkbox" value="Orange"></div>
-                <div class="selectDropdownItem"><span>Pineapple</span> <input type="checkbox" value="Pineapple"></div>
-                <div class="selectDropdownItem"><span>Grapes</span> <input type="checkbox" value="Grapes"></div>
             </div>
         </div>
     </div>

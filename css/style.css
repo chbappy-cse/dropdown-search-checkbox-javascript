@@ -1,12 +1,19 @@
+/* Import Google Font: Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Set global font family */
 body {
     font-family: "Poppins", sans-serif;
 }
+
+/* Dropdown wrapper */
 .selectDropdown {
     position: relative;
     display: block;
     width: 100%;
 }
+
+/* Dropdown toggle button */
 .selectDropdownToggle {
     width: 100%;
     border: 1px solid #2F8B8A;
@@ -20,26 +27,36 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: relative;
-    z-index: 9999;
+    z-index: 9999; /* Ensure dropdown button stays above other elements */
 }
+
+/* Rotate icon when dropdown opens */
+.selectDropdownToggle img {
+    transition: transform 0.3s ease-in-out;
+}
+.rotate {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu styles */
 .selectDropdownMenu {
-    display: none;
+    display: none; /* Initially hidden */
     position: absolute;
     width: 100%;
     background: #fff;
     border: 1px solid #ddd;
-    max-height: 300px;
+    max-height: 300px; /* Limit height and enable scroll */
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 1000;
     box-shadow: 0px 4px 34px 0px #0000000D;
-    
     margin-top: -10px;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
 }
+
+/* Search box inside dropdown */
 .selectDropdownMenu input[type="text"] {
     border: 1px solid #E2E8F0;
     width: 95%;
@@ -50,10 +67,14 @@ body {
     border-radius: 8px;
     margin-bottom: .5rem;
 }
-.selectDropdownMenu input[type="text"]:focus{
+
+/* Search box focus effect */
+.selectDropdownMenu input[type="text"]:focus {
     border: 1px solid #2F8B8A;
     outline: none;
 }
+
+/* Dropdown items (each option) */
 .selectDropdownItem {
     display: flex;
     justify-content: space-between;
@@ -66,19 +87,26 @@ body {
     color: #000000;
     user-select: none;
 }
+
+/* Hover and focus effects on dropdown items */
 .selectDropdownItem:focus,
 .selectDropdownItem:hover {
-    background: rgba(47, 139, 138, 0.1);
+    background: rgba(47, 139, 138, 0.1); /* Light green background */
     color: #2F8B8A;
 }
+
+/* Expand clickable area inside item */
 .selectDropdownItem span {
     flex: 1;
 }
+
+/* Disable pointer events on checkboxes to allow clicking on the full item */
 .selectDropdownItem input[type="checkbox"] {
-    pointer-events: none; 
+    pointer-events: none;
 }
 
-.dropdown-toggle__title{
+/* Dropdown title section (toggle button) */
+.dropdown-toggle__title {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -86,25 +114,35 @@ body {
     padding: .75rem;
     user-select: none;
 }
-.slectInputSearch{
-    position: relative;
 
+/* Search box wrapper */
+.slectInputSearch {
+    position: relative;
 }
-.slectInputSearch img{
+
+/* Search icon inside input field */
+.slectInputSearch img {
     position: absolute;
     top: .6rem;
     height: 1rem;
     left: 1rem;
 }
-.rotate {
-    transform: rotate(180deg);
-    transition: .3s;
-}
+
+/* Hide elements with "hidden" class */
 .hidden {
     display: none;
 }
-@media(max-width: 576px){
-    .selectDropdownMenu input[type="text"]{
+
+/* "Select All" button styles */
+.selectAll {
+    font-weight: 600;
+    color: #2F8B8A;
+    background: rgba(47, 139, 138, 0.1);
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 576px) {
+    .selectDropdownMenu input[type="text"] {
         width: 85%;
     }
 }
