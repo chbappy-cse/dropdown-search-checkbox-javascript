@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown with Search & Checkboxes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+        .selectDropdown {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        .selectDropdownToggle {
+            width: 100%;
+            border: 1px solid #2F8B8A;
+            cursor: pointer;
+            background: #fff;
+            text-align: left;
+            border-radius: 8px;
+            color: #334155;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: relative;
+            z-index: 9999;
+        }
+        .selectDropdownMenu {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ddd;
+            max-height: 300px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0px 4px 34px 0px #0000000D;
+            
+            margin-top: -10px;
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+        .selectDropdownMenu input[type="text"] {
+            border: 1px solid #E2E8F0;
+            width: 97.3%;
+            color: #334155;
+            font-weight: 500;
+            padding: .5rem 1rem;
+            border-radius: 8px;
+            margin-bottom: .5rem;
+        }
+        .selectDropdownMenu input[type="text"]:focus{
+            border: 1px solid #2F8B8A;
+            outline: none;
+        }
+        .selectDropdownItem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.75rem;
+            color: #000000;
+            user-select: none;
+        }
+        .selectDropdownItem:focus,
+        .selectDropdownItem:hover {
+            background: rgba(47, 139, 138, 0.1);
+            color: #2F8B8A;
+        }
+        .selectDropdownItem span {
+            flex: 1;
+        }
+        .selectDropdownItem input[type="checkbox"] {
+            pointer-events: none; 
+        }
+
+        .dropdown-toggle__title{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .75rem;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="selectDropdown">
+    <div class="selectDropdownToggle">
+        <div class="dropdown-toggle__title">
+            <span>Select Continent/ Region</span>
+            <img src="./chevron-up.svg">
+        </div>
+    </div>
+    <div class="selectDropdownMenu">
+        <div style="padding: 1rem;">
+            <div class="slectInputSearch">
+                <input type="text" id="searchBox" placeholder="Search...">
+            </div>
+            <div id="selectDropdownItems">
+                <div class="selectDropdownItem"><span>Apple</span> <input type="checkbox" value="Apple"></div>
+                <div class="selectDropdownItem"><span>Banana</span> <input type="checkbox" value="Banana"></div>
+                <div class="selectDropdownItem"><span>Cherry</span> <input type="checkbox" value="Cherry"></div>
+                <div class="selectDropdownItem"><span>Mango</span> <input type="checkbox" value="Mango"></div>
+                <div class="selectDropdownItem"><span>Orange</span> <input type="checkbox" value="Orange"></div>
+                <div class="selectDropdownItem"><span>Pineapple</span> <input type="checkbox" value="Pineapple"></div>
+                <div class="selectDropdownItem"><span>Grapes</span> <input type="checkbox" value="Grapes"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const dropdown = document.querySelector(".selectDropdown");
+    const dropdownToggle = document.querySelector(".selectDropdownToggle");
+    const dropdownMenu = document.querySelector(".selectDropdownMenu");
+    const searchBox = document.getElementById("searchBox");
+
+    // Toggle dropdown menu
+    dropdownToggle.addEventListener("click", () => {
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Toggle checkbox when clicking dropdown item
+    document.querySelectorAll(".selectDropdownItem").forEach(item => {
+        item.addEventListener("click", () => {
+            const checkbox = item.querySelector("input[type='checkbox']");
+            checkbox.checked = !checkbox.checked; // Toggle checked state
+        });
+    });
+
+    // Filter items based on search
+    searchBox.addEventListener("keyup", () => {
+        let searchValue = searchBox.value.toLowerCase();
+        document.querySelectorAll(".selectDropdownItem").forEach(item => {
+            let text = item.textContent.toLowerCase();
+            item.style.display = text.includes(searchValue) ? "flex" : "none";
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>
